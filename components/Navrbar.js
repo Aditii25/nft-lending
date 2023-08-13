@@ -59,7 +59,7 @@ function Navrbar() {
                 "font-[700] text-[2rem] tracking-widest"
               )}
             >
-              <Link href="/">NFT Lending</Link>
+              <Link href="/">NFT LENDING</Link>
             </h2>
             {/* <Image src="" alt=""></Image> */}
           </div>
