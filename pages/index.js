@@ -6,7 +6,7 @@ import heroimg from "../public/nft-header-visual.webp";
 import { useRouter } from "next/navigation";
 import heroimg2 from "../public/how-to-buy-nft.png";
 import superfluid_logo from "../public/superfluid-logo-dark.svg";
-import polygon_logo from "../public/polygon-logo.svg";
+import op_logo from "../public/logo-ether.svg";
 import thegraph_logo from "../public/The-Graph.png";
 // import heroimg3 from "../public/nft1.png";
 // import { QueryClient, QueryClientProvider, useQuery } from "react-query";
@@ -139,7 +139,7 @@ export default function Home() {
             </div>
             <div className="bg-white rounded-xl p-4 max-w-[300px] max-h-[300px] h-[200px] flex flex-col justify-center items-center">
               <Image
-                src={polygon_logo}
+                src={op_logo}
                 alt="polygon"
                 width="200px"
                 height="150px"
