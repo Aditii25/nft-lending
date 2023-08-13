@@ -3,11 +3,15 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
 import heroimg from "../public/nft-header-visual.webp";
+import { useRouter } from "next/navigation";
 import heroimg2 from "../public/how-to-buy-nft.png";
+import superfluid_logo from "../public/superfluid-logo-dark.svg";
+import polygon_logo from "../public/polygon-logo.svg";
+import thegraph_logo from "../public/The-Graph.png";
 // import heroimg3 from "../public/nft1.png";
 // import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -16,11 +20,19 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
 
 export default function Home() {
-  const scrollPosition = useScrollPosition();
+  // const scrollPosition = useScrollPosition();
+  const router = useRouter();
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
   // ********** RainbowKitProvider **********
+  const getNow = () => {
+    if (address) {
+      router.push("/profile");
+    } else {
+      alert("Connect your wallet first");
+    }
+  };
 
   const { address } = useAccount();
   const [showFoundAdd, setFoundAdd] = useState(false);
@@ -51,7 +63,10 @@ export default function Home() {
               Repay your loan and get your NFT back.
             </p>
             <div className="mt-[2rem]">
-              <button className="flex py-[1rem] px-[2rem] items-center bg-[#1E4DD8] gap-[0.5rem] whitespace-nowrap text-[1.25rem] font-[700] rounded-lg">
+              <button
+                className="relative z-[500] flex py-[1rem] px-[2rem] items-center bg-[#1E4DD8] gap-[0.5rem] whitespace-nowrap text-[1.25rem] font-[700] rounded-lg cursur-pointer"
+                onClick={() => getNow()}
+              >
                 Get Now{" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -82,30 +97,63 @@ export default function Home() {
 
         <div className="min-h-[100vh] m-auto py-[8rem] bg-[#ffffff] relative z-10">
           <div className="m-auto text-center">
-            <h2 className="font-[700] text-[2.5rem] text-black">
-              How It Works...
+            <h2 className="font-[700] text-[2.5rem] text-black mb-4">
+              How It Works ?
             </h2>
             <div>
-              <ul>
+              <ul className="text-[#000000] grid-ul">
                 <li>
                   Put down an NFT as Collateral and borrow stablecoins against
-                  it. 
+                  it.
                 </li>
-                <li>Take one or more loans</li>
                 <li>
-                  This will pull a stream from you using ACL to pay interest on
-                  your loan.
+                  Take one or more loans. This will pull a stream from you using
+                  ACL to pay interest on your loan.
                 </li>
                 <li>
                   Pay any amount of your loan then the repayment transaction
                   would update your stream down
                 </li>
+                <li>Repay full loan amount and get your NFT back.</li>
+
                 <li>
-                  Repay full loan amount and get your NFT back Just connect your
-                  wallet, stake your NFTs, and apply for loans; that is all. Go
-                  Now!{" "}
+                  Just connect your wallet, stake your NFTs, and apply for loans
+                  ; that is all. Go Now!{" "}
                 </li>
               </ul>
+            </div>
+          </div>
+        </div>
+        {/* ********** third section ********** */}
+        <div className=" flex flex-col justify-center items-center min-h-[80vh] p-8">
+          <h1 className="m-8 text-[700] text-[2.5rem]">Powered By</h1>
+          <div className="sponsers">
+            <div className="bg-white rounded-xl p-4 max-w-[300px] max-h-[300px] h-[200px] flex flex-col justify-center items-center">
+              <Image
+                src={superfluid_logo}
+                alt="superfluid"
+                width="200px"
+                height="150px"
+                className="max-w-[100%] w-[100%] max-h-[100%] h-[100%]"
+              ></Image>
+            </div>
+            <div className="bg-white rounded-xl p-4 max-w-[300px] max-h-[300px] h-[200px] flex flex-col justify-center items-center">
+              <Image
+                src={polygon_logo}
+                alt="polygon"
+                width="200px"
+                height="150px"
+                className="max-w-[100%] w-[100%] max-h-[100%] h-[100%]"
+              ></Image>
+            </div>
+            <div className="bg-white rounded-xl p-4 max-w-[300px] max-h-[300px] h-[200px] flex flex-col justify-center items-center">
+              <Image
+                src={thegraph_logo}
+                alt="polygon"
+                width="200px"
+                height="150px"
+                className="max-w-[100%] w-[100%] max-h-[100%] h-[100%]"
+              ></Image>
             </div>
           </div>
         </div>
